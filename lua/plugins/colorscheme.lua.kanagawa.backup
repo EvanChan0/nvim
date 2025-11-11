@@ -1,0 +1,187 @@
+-- Theme/Colorscheme (uncomment section for whichever theme you prefer or use your own)
+-- Kanagawa Theme (Custom Palette)
+return {
+	-- https://github.com/rebelot/kanagawa.nvim
+	"rebelot/kanagawa.nvim", -- You can replace this with your favorite colorscheme
+	lazy = false, -- We want the colorscheme to load immediately when starting Neovim
+	priority = 1000, -- Load the colorscheme before other non-lazy-loaded plugins
+	opts = {
+		-- Replace this with your scheme-specific settings or remove to use the defaults
+		transparent = true,
+		background = {
+			-- light = "lotus",
+			dark = "wave", -- "wave, dragon"
+		},
+		-- overrides = function(colors)
+		-- 	return {
+		-- 		-- Force which-key to have a solid background
+		-- 		WhichKeyFloat = { bg = colors.palette.sumiInk3 },
+		-- 		WhichKeyBorder = { fg = colors.palette.fujiGray, bg = colors.palette.sumiInk3 },
+		-- 		WhichKeyNormal = { bg = colors.palette.sumiInk3 },
+		-- 		WhichKeyTitle = { fg = colors.palette.oniViolet, bg = colors.palette.sumiInk3, bold = true },
+		-- 		-- Floating windows and borders
+		-- 		NormalFloat = { fg = colors.palette.fujiWhite, bg = colors.palette.sumiInk3 },
+		-- 		FloatBorder = { fg = colors.palette.fujiGray, bg = colors.palette.sumiInk3 },
+		-- 		FloatTitle = { fg = colors.palette.oniViolet, bg = colors.palette.sumiInk3, bold = true },
+		-- 		-- Window separator (分屏分隔线)
+		-- 		WinSeparator = { fg = "#363636" }, -- 灰色，能看清但不刺眼
+		-- 		VertSplit = { fg = "#363636" }, -- 兼容老版本
+		-- 	}
+		-- end,
+		-- colors = {
+		-- 	palette = {
+		-- 		-- Background colors
+		-- 		sumiInk0 = "#161616", -- modified
+		-- 		sumiInk1 = "#181818", -- modified
+		-- 		sumiInk2 = "#1a1a1a", -- modified
+		-- 		sumiInk3 = "#1F1F1F", -- modified
+		-- 		sumiInk4 = "#2A2A2A", -- modified
+		-- 		sumiInk5 = "#363636", -- modified
+		-- 		sumiInk6 = "#545454", -- modified
+
+		-- 		-- Popup and Floats
+		-- 		waveBlue1 = "#322C47", -- modified
+		-- 		waveBlue2 = "#4c4464", -- modified
+
+		-- 		-- Diff and Git
+		-- 		winterGreen = "#2B3328",
+		-- 		winterYellow = "#49443C",
+		-- 		winterRed = "#43242B",
+		-- 		winterBlue = "#252535",
+		-- 		autumnGreen = "#76A56A", -- modified
+		-- 		autumnRed = "#C34043",
+		-- 		autumnYellow = "#DCA561",
+
+		-- 		-- Diag
+		-- 		samuraiRed = "#E82424",
+		-- 		roninYellow = "#FF9E3B",
+		-- 		waveAqua1 = "#7E9CD8", -- modified
+		-- 		dragonBlue = "#7FB4CA", -- modified
+
+		-- 		-- Foreground and Comments
+		-- 		oldWhite = "#C8C093",
+		-- 		fujiWhite = "#DCD7BA", -- modified (浅米黄色，Kanagawa 原版)
+		-- 		fujiGray = "#727169",
+		-- 		oniViolet = "#BFA3E6", -- modified
+		-- 		oniViolet2 = "#BCACDB", -- modified
+		-- 		crystalBlue = "#8CABFF", -- modified
+		-- 		springViolet1 = "#938AA9",
+		-- 		springViolet2 = "#9CABCA",
+		-- 		springBlue = "#7FC4EF", -- modified
+		-- 		waveAqua2 = "#77BBDD", -- modified
+
+		-- 		springGreen = "#98BB6C",
+		-- 		boatYellow1 = "#938056",
+		-- 		boatYellow2 = "#C0A36E",
+		-- 		carpYellow = "#FFEE99", -- modified
+
+		-- 		sakuraPink = "#D27E99",
+		-- 		waveRed = "#E46876",
+		-- 		peachRed = "#FF5D62",
+		-- 		surimiOrange = "#FFAA44", -- modified
+		-- 		katanaGray = "#717C7C",
+		-- 	},
+		-- },
+	},
+	config = function(_, opts)
+		require("kanagawa").setup(opts) -- Replace this with your favorite colorscheme
+		vim.cmd("colorscheme kanagawa") -- Replace this with your favorite colorscheme
+
+		-- -- Custom diff colors (使用 Kanagawa 主题的柔和颜色)
+		-- vim.cmd([[
+		--   " 使用 Kanagawa 调色板的 diff 颜色
+		--   autocmd VimEnter * hi DiffAdd guifg=#76A56A guibg=#2B3328
+		--   autocmd VimEnter * hi DiffDelete guifg=#C34043 guibg=#43242B
+		--   autocmd VimEnter * hi DiffChange guifg=#DCA561 guibg=#49443C
+		--   autocmd VimEnter * hi DiffText guifg=#76A56A guibg=#2B3328 gui=bold
+
+		--   " Git 标记颜色（侧边栏的 +/-/~ 符号）
+		--   autocmd VimEnter * hi GitSignsAdd guifg=#76A56A guibg=NONE
+		--   autocmd VimEnter * hi GitSignsChange guifg=#DCA561 guibg=NONE
+		--   autocmd VimEnter * hi GitSignsDelete guifg=#C34043 guibg=NONE
+
+		--   " Telescope 中的 diff 预览颜色
+		--   autocmd VimEnter * hi diffAdded guifg=#76A56A
+		--   autocmd VimEnter * hi diffRemoved guifg=#C34043
+		--   autocmd VimEnter * hi diffChanged guifg=#DCA561
+		-- ]])
+
+		-- -- Custom border colors
+		-- vim.cmd([[
+		--   autocmd ColorScheme * hi NormalFloat guifg=#F9E7C0 guibg=#1F1F1F
+		--   autocmd ColorScheme * hi FloatBorder guifg=#F9E7C0 guibg=#1F1F1F
+		-- ]])
+
+		-- -- Line number column colors - match editor background
+		-- vim.cmd([[
+		--   highlight LineNr guibg=NONE
+		--   highlight SignColumn guibg=NONE
+		--   highlight CursorLineNr guibg=NONE
+		--   highlight FoldColumn guibg=NONE
+		--   highlight GitSignsAdd guibg=NONE
+		--   highlight GitSignsChange guibg=NONE
+		--   highlight GitSignsDelete guibg=NONE
+		-- ]])
+
+		-- -- Which-key popup colors - use autocmd to ensure it applies after plugin loads
+		-- vim.api.nvim_create_autocmd("FileType", {
+		-- 	pattern = "WhichKey",
+		-- 	callback = function()
+		-- 		vim.cmd([[
+		--       highlight WhichKey guifg=#7E9CD8 guibg=#1F1F1F
+		--       highlight WhichKeyGroup guifg=#7FB4CA guibg=#1F1F1F
+		--       highlight WhichKeyDesc guifg=#DCD7BA guibg=#1F1F1F
+		--       highlight WhichKeySeparator guifg=#727169 guibg=#1F1F1F
+		--       highlight WhichKeyFloat guibg=#1F1F1F guifg=#DCD7BA
+		--       highlight WhichKeyBorder guifg=#727169 guibg=#1F1F1F
+		--       highlight WhichKeyNormal guibg=#1F1F1F guifg=#DCD7BA
+		--       highlight WhichKeyTitle guifg=#957FB8 guibg=#1F1F1F gui=bold
+		--     ]])
+		-- 	end,
+		-- })
+
+		-- -- Also set on VimEnter to cover all cases
+		-- vim.api.nvim_create_autocmd("VimEnter", {
+		-- 	callback = function()
+		-- 		vim.cmd([[
+		--       highlight WhichKey guifg=#7E9CD8 guibg=#1F1F1F
+		--       highlight WhichKeyGroup guifg=#7FB4CA guibg=#1F1F1F
+		--       highlight WhichKeyDesc guifg=#DCD7BA guibg=#1F1F1F
+		--       highlight WhichKeySeparator guifg=#727169 guibg=#1F1F1F
+		--       highlight WhichKeyFloat guibg=#1F1F1F guifg=#DCD7BA
+		--       highlight WhichKeyBorder guifg=#727169 guibg=#1F1F1F
+		--       highlight WhichKeyNormal guibg=#1F1F1F guifg=#DCD7BA
+		--       highlight WhichKeyTitle guifg=#957FB8 guibg=#1F1F1F gui=bold
+		--     ]])
+		-- 	end,
+		-- })
+
+		-- -- Telescope 配色（与 Kanagawa 主题融合）
+		-- vim.api.nvim_create_autocmd("VimEnter", {
+		-- 	callback = function()
+		-- 		vim.cmd([[
+		--       " Telescope 边框和背景
+		--       highlight TelescopeBorder guifg=#727169 guibg=#1F1F1F
+		--       highlight TelescopeNormal guifg=#F9E7C0 guibg=#1F1F1F
+		--       highlight TelescopePromptNormal guifg=#F9E7C0 guibg=#1F1F1F
+		--       highlight TelescopeResultsNormal guifg=#F9E7C0 guibg=#1F1F1F
+		--       highlight TelescopePreviewNormal guifg=#F9E7C0 guibg=#1F1F1F
+
+		--       " Telescope 提示符和选择
+		--       highlight TelescopePromptPrefix guifg=#7FB4CA gui=bold
+		--       highlight TelescopeSelection guifg=#F9E7C0 guibg=#2A2A2A gui=bold
+		--       highlight TelescopeSelectionCaret guifg=#C34043 guibg=#2A2A2A gui=bold
+
+		--       " Telescope 标题（虽然我们隐藏了，但以防万一）
+		--       highlight TelescopeTitle guifg=#BFA3E6 guibg=#1F1F1F gui=bold
+		--       highlight TelescopePromptTitle guifg=#BFA3E6 guibg=#1F1F1F gui=bold
+		--       highlight TelescopeResultsTitle guifg=#BFA3E6 guibg=#1F1F1F gui=bold
+		--       highlight TelescopePreviewTitle guifg=#BFA3E6 guibg=#1F1F1F gui=bold
+
+		--       " Telescope 匹配高亮
+		--       highlight TelescopeMatching guifg=#76A56A gui=bold
+		--     ]])
+		-- 	end,
+		-- })
+	end,
+}

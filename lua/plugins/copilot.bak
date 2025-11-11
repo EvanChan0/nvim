@@ -1,0 +1,27 @@
+return {
+	"zbirenbaum/copilot.lua",
+	cmd = "Copilot",
+	build = ":Copilot auth",
+	event = { "BufReadPost", "BufNewFile" },
+	opts = function()
+		local ai_cmp = vim.g.ai_cmp == true or vim.g.ai_cmp == 1 or vim.g.ai_cmp == "1"
+
+		return {
+			suggestion = {
+				enabled = not ai_cmp,
+				auto_trigger = true,
+				hide_during_completion = ai_cmp,
+				keymap = {
+					accept = "<Tab>", -- 使用 Tab 接受 Copilot 建议
+					next = "<M-]>",
+					prev = "<M-[>",
+				},
+			},
+			panel = { enabled = false },
+			filetypes = {
+				markdown = true,
+				help = true,
+			},
+		}
+	end,
+}
